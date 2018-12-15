@@ -29,7 +29,7 @@ RUN  apt-get install -y \
 COPY conf/vdr/* /var/lib/vdr/
 
 # copy vdr plugin configs
-COPY conf/plugins/* /etc/vdr/plugins
+COPY conf/plugins/* /etc/vdr/plugins/
 
 # clean apt leftovers
 RUN  apt-get clean && \
