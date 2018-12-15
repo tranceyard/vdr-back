@@ -13,8 +13,8 @@ vdr headless server based on the Ubuntu 14.04 image and yaVDR Ubuntu repository
 - wirbelscan (0.0.9) - DVB and pvrinput channel scan for VDR
 - xvdr (0.9.9) - XVDR Server
 
-# yaVDR repo: 
-- ppa:yavdr/stable-vd
+# yaVDR repo
+- ppa:yavdr/stable-vdr
 
-# Run Docker image:
+# Run Docker image
  ```docker run -it --rm --device=/dev/dvb:/dev/dvb -v vol1:/srv/vdr -v vol2:/etc/vdr -v vol3:/var/lib/vdr -p 2004:2004 -p 3000:3000 -p 6419:6419 -p 8002:8002 -p 8008:8008 -p 34890:34890 vdr-back:0.2.1```

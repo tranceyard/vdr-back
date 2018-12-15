@@ -6,7 +6,7 @@ MAINTAINER dmaligin <denis@docker.com>
 ENV LANG de_DE.UTF-8
 
 # import gpg key && copy repo
-COPY conf/yavdr-trusty.list /etc/apt/sources.list.d
+COPY conf/yavdr-trusty.list /etc/apt/sources.list.d/
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8103B360
 
 # update the image to the latest state 
@@ -26,7 +26,7 @@ RUN  apt-get install -y \
   vdr-plugin-live
 
 # copy vdr configs
-COPY conf/vdr/* /var/lib/vdr
+COPY conf/vdr/* /var/lib/vdr/
 
 # copy vdr plugin configs
 COPY conf/plugins/* /etc/vdr/plugins
