@@ -24,5 +24,10 @@ vdr headless server based on the Ubuntu 14.04 image and yaVDR Ubuntu repository
 http://channelpedia.yavdr.com/gen/DVB-S/S19.2E/S19.2E_complete_sorted_by_groups.channels.conf
 
 # Run Docker image
- ```docker run -it --rm --device=/dev/dvb:/dev/dvb -v vol1:/srv/vdr -v vol2:/etc/vdr -v vol3:/var/lib/vdr -p 2004:2004 -p 3000:3000 -p 6419:6419 -p 8002:8002 -p 8008:8008 -p 34890:34890 vdr-back:0.2.1```
+ ```docker run --name vdr-back -it -d  --restart unless-stopped --device=/dev/dvb:/dev/dvb -v /srv/vdr/video:/srv/vdr/video -v vdr_etc:/etc/vdr -v vdr_varlib:/var/lib/vdr -p 2004:2004 -p 3000:3000 -p 6419:6419 -p 8002:8002 -p 8008:8008 -p 34890:34890 maligin/vdr-back:latest```
+### where:
+- ```/srv/vdr/videos``` is the recordings directory
+- ```/dev/dvb``` is the DVB-S2 card
+- ```vdr_etc``` and ```vdr_varlib``` are the volumes to store the persistent changes in "channels.conf" or "setup.conf"
+
 
