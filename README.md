@@ -16,5 +16,9 @@ vdr headless server based on the Ubuntu 14.04 image and yaVDR Ubuntu repository
 # yaVDR repo
 - ppa:yavdr/stable-vdr
 
+# channels.conf
+http://channelpedia.yavdr.com/gen/DVB-S/S19.2E/S19.2E_complete_sorted_by_groups.channels.conf
+
 # Run Docker image
  ```docker run -it --rm --device=/dev/dvb:/dev/dvb -v vol1:/srv/vdr -v vol2:/etc/vdr -v vol3:/var/lib/vdr -p 2004:2004 -p 3000:3000 -p 6419:6419 -p 8002:8002 -p 8008:8008 -p 34890:34890 vdr-back:0.2.1```
+
