@@ -1,5 +1,14 @@
 #!/bin/sh
 
+## for nfs volume (recordings)
+# docker volume create --driver local --opt type=nfs --opt o=addr=10.10.1.23,rw --opt device=:/mnt/tank/vdr vdr-back_video
+
+## for vsphere volumes (vdr and etc folders):
+## install vsphere storage plugin (https://github.com/vmware/vsphere-storage-for-docker) first:
+# docker plugin install --grant-all-permissions --alias vsphere vmware/vsphere-storage-for-docker:latest
+# docker volume create --driver=vsphere --name=vdr-back_etc -o size=200mb
+# docker volume create --driver=vsphere --name=vdr-back_var -o size=500mb
+
 docker run --name vdr-back -it -d \
  --restart unless-stopped \
  --device=/dev/dvb:/dev/dvb \
