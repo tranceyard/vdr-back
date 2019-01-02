@@ -31,7 +31,9 @@ RUN  apt-get install -y \
   vdr-plugin-dummydevice \
   vdr-plugin-live \
   vdr-plugin-epgsearch \
-  vdr-plugin-svdrpservice
+  vdr-plugin-svdrpservice \
+  vdr-plugin-svdrposd \
+  vdr-plugin-svdrpext
 
 # copy vdr configs
 COPY conf/vdr/* /var/lib/vdr/
