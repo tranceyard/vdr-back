@@ -4,7 +4,12 @@ MAINTAINER dmaligin <denis@docker.com>
 
 # set language
 ENV LANG de_DE.UTF-8
+ENV LC_ALL de_DE.UTF-8
+ENV VDR_LANG de_DE.UTF-8
 ENV TZ Europe/Berlin
+
+# generate locates
+RUN locale-gen de_DE.UTF-8 en_US.UTF-8
 
 # import gpg key && copy repo
 COPY conf/yavdr-trusty.list /etc/apt/sources.list.d/
