@@ -25,7 +25,8 @@ RUN  apt-get install -y \
   vdr-plugin-ddci2 \
   vdr-plugin-dummydevice \
   vdr-plugin-live \
-  vdr-plugin-epgsearch
+  vdr-plugin-epgsearch \
+  vdr-plugin-svdrpservice
 
 # copy vdr configs
 COPY conf/vdr/* /var/lib/vdr/
