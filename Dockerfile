@@ -1,19 +1,19 @@
-# baseimage - start with Ubuntu 16.04
-FROM ubuntu:14.04
-MAINTAINER dmaligin <denis@docker.com>
+# baseimage - start with Ubuntu 18.04
+FROM ubuntu:18.04
+MAINTAINER tnds82 <addons@tnds82.xyz>
 
 # set language
-ENV LANG de_DE.UTF-8
-ENV LC_ALL de_DE.UTF-8
-ENV VDR_LANG de_DE.UTF-8
-ENV TZ Europe/Berlin
+ENV LANG pt_PT.UTF-8
+ENV LC_ALL pt_PT.UTF-8
+ENV VDR_LANG pt_PT.UTF-8
+ENV TZ Europe/Lisbon
 
 # generate locates
-RUN locale-gen de_DE.UTF-8 en_US.UTF-8
+RUN locale-gen pt_PT.UTF-8 en_US.UTF-8
 
 # import gpg key && copy repo
-COPY conf/yavdr-trusty.list /etc/apt/sources.list.d/
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8103B360
+COPY conf/yavdr-bionic.list /etc/apt/sources.list.d/
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FFEBD240
 
 # update the image to the latest state 
 RUN apt-get update && \
@@ -21,16 +21,25 @@ RUN apt-get update && \
 
 # install vdr, vdr-plugins 
 RUN  apt-get install -y \
-  vdr vdr-plugin-eepg \
-  vdr-plugin-femon \
-  vdr-plugin-streamdev-server \
-  vdr-plugin-vnsiserver \
-  vdr-plugin-wirbelscan \
-  vdr-plugin-xvdr \
+  vdr \
   vdr-plugin-ddci2 \
   vdr-plugin-dummydevice \
-  vdr-plugin-live \
+  vdr-plugin-dvbapi \
+  vdr-plugin-eepg \
+  vdr-plugin-epgfixer \
   vdr-plugin-epgsearch \
+  vdr-plugin-iptv \
+  vdr-plugin-live \
+  vdr-plugin-restfulapi \
+  vdr-plugin-robotv \
+  vdr-plugin-satip \
+  vdr-plugin-streamdev \
+  vdr-plugin-vnsiserver \
+  vdr-plugin-wirbelscan \
+  vdr-plugin-wirbelscancontrol \
+  vdr-plugin-xmltv2vdr \
+  vdr-plugin-femon \
+  vdr-plugin-xvdr \
   vdr-plugin-svdrpservice \
   vdr-plugin-svdrposd \
   vdr-plugin-svdrpext
