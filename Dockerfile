@@ -9,15 +9,16 @@ ENV VDR_LANG pt_PT.UTF-8
 ENV TZ Europe/Lisbon
 
 # generate locates
+RUN apt clean && apt update && apt install -y locales gnupg
 RUN locale-gen pt_PT.UTF-8 en_US.UTF-8
 
 # import gpg key && copy repo
 COPY conf/yavdr-bionic.list /etc/apt/sources.list.d/
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FFEBD240
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8103B360
 
 # update the image to the latest state 
-RUN apt-get update && \
-  apt-get dist-upgrade -y
+RUN apt update && apt upgrade -y
 
 # install vdr, vdr-plugins 
 RUN  apt-get install -y \
@@ -33,13 +34,11 @@ RUN  apt-get install -y \
   vdr-plugin-restfulapi \
   vdr-plugin-robotv \
   vdr-plugin-satip \
-  vdr-plugin-streamdev \
+  vdr-plugin-streamdev-server \
   vdr-plugin-vnsiserver \
   vdr-plugin-wirbelscan \
-  vdr-plugin-wirbelscancontrol \
   vdr-plugin-xmltv2vdr \
   vdr-plugin-femon \
-  vdr-plugin-xvdr \
   vdr-plugin-svdrpservice \
   vdr-plugin-svdrposd \
   vdr-plugin-svdrpext
