@@ -63,7 +63,7 @@ RUN  apt-get clean && \
 
 # set permissions
 RUN \
-  chown -R vdr:vdr /etc/vdr /var/lib/vdr
+  chown -R vdr:vdr /etc/vdr /var/lib/vdr /srv/vdr
  
 ENV HOME /var/lib/vdr
 WORKDIR /var/lib/vdr
