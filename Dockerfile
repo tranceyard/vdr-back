@@ -22,6 +22,7 @@ RUN apt update && apt upgrade -y
 
 # install vdr, vdr-plugins 
 RUN  apt-get install -y \
+  wget \
   vdr \
   vdr-plugin-ddci2 \
   vdr-plugin-dummydevice \
@@ -43,6 +44,13 @@ RUN  apt-get install -y \
   vdr-plugin-svdrposd \
   vdr-plugin-svdrpext
 
+
+#wirbelscancontrol
+RUN cd /tmp &&\
+ wget https://www.gen2vdr.de/wirbel/wirbelscancontrol/vdr-wirbelscancontrol-0.0.2.tgz && \
+ tar -xf vdr-wirbelscancontrol-0.0.2.tgz -C /etc/vdr/plugins/ && \
+ mv /etc/vdr/plugins/wirbelscancontrol-0.0.2 /etc/vdr/plugins/wirbelscancontrol
+
 # copy vdr configs
 COPY conf/vdr/* /var/lib/vdr/
 
@@ -54,13 +62,14 @@ RUN  apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # set permissions
-RUN chown -R vdr:vdr /etc/vdr /var/lib/vdr /srv/vdr
-
+RUN \
+  chown -R vdr:vdr /etc/vdr /var/lib/vdr
+ 
 ENV HOME /var/lib/vdr
 WORKDIR /var/lib/vdr
 
 # volume mappings
-VOLUME /srv/vdr /etc/vdr /var/lib/vdr 
+VOLUME /srv/vdr /etc/vdr /var/lib/vdr
 
 # copy startcmd
 COPY runvdr.sh /
