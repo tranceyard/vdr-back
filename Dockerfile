@@ -9,6 +9,7 @@ ENV TZ Europe/Lisbon
 
 # generate locates
 RUN apt clean && apt update && apt install -y locales gnupg
+RUN locale-gen pt_PT.UTF-8 en_US.UTF-8
 
 # import gpg key && copy repo
 COPY conf/yavdr-trusty.list /etc/apt/sources.list.d/
