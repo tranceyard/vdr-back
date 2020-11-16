@@ -1,5 +1,5 @@
 # Description
-VDR headless server based on the Ubuntu 20.04 image and yaVDR Ubuntu repository
+VDR headless server based on the Ubuntu 18.04 image and yaVDR Ubuntu repository
 
 # Contents
 - vdr (2.4.0/2.4.0) - The Video Disk Recorder
