@@ -1,5 +1,5 @@
 # baseimage - start with Ubuntu 18.04
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER tnds82 <addons@tnds82.xyz>
 
 # set language
@@ -13,7 +13,7 @@ RUN apt clean && apt update && apt install -y locales gnupg
 RUN locale-gen pt_PT.UTF-8 en_US.UTF-8
 
 # import gpg key && copy repo
-COPY conf/yavdr-bionic.list /etc/apt/sources.list.d/
+COPY conf/yavdr-focal.list /etc/apt/sources.list.d/
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FFEBD240
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8103B360
 
