@@ -2,14 +2,14 @@ FROM ubuntu:14.04
 MAINTAINER dmaligin <denis@docker.com>
 
 # set language
-ENV LANG pt_PT.UTF-8
-ENV LC_ALL pt_PT.UTF-8
-ENV VDR_LANG pt_PT.UTF-8
-ENV TZ Europe/Lisbon
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+ENV VDR_LANG en_US.UTF-8
+ENV TZ Europe/London
 
 # generate locates
 RUN apt clean && apt update && apt install -y locales gnupg
-RUN locale-gen pt_PT.UTF-8 en_US.UTF-8
+RUN locale-gen en_US.UTF-8 en_US.UTF-8
 
 # import gpg key && copy repo
 COPY conf/yavdr-trusty.list /etc/apt/sources.list.d/
